@@ -16,8 +16,6 @@ if (isDev) {
 }
 app.use(express.json());
 
-
-
 app.use((req: Request, _res: Response, _next: NextFunction) => {
   throw AppError.notFound(req.originalUrl);
 });
