@@ -9,15 +9,15 @@ const STRIPPABLE_SEPARATORS = /[ -]/g;
 const DIGITS_ONLY = /^\d+$/;
 
 export const normalizeCardNumber = (raw: string): NormalizationResult => {
-  const stripped = raw.replace(STRIPPABLE_SEPARATORS, "");
+  const strippedDigits = raw.replace(STRIPPABLE_SEPARATORS, "");
 
-  if (!DIGITS_ONLY.test(stripped)) {
+  if (!DIGITS_ONLY.test(strippedDigits)) {
     return { ok: false, reason: "invalid_characters" };
   }
 
-  if (stripped.length < MIN_LENGTH || stripped.length > MAX_LENGTH) {
+  if (strippedDigits.length < MIN_LENGTH || strippedDigits.length > MAX_LENGTH) {
     return { ok: false, reason: "invalid_length" };
   }
 
-  return { ok: true, digits: stripped };
+  return { ok: true, digits: strippedDigits };
 };
