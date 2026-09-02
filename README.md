@@ -128,5 +128,6 @@ This exists purely to confirm the process is up - a wiring smoke test, not a pro
 - **Issuer name / country / card-level lookup** - this data isn't derivable from the card number alone; it requires a commercial BIN database, which is unnecessary infrastructure for what's being asked here.
 - **Rate limiting** - a reasonable production concern for a public endpoint, but out of scope for a single-endpoint assessment repo; noted here as a known next step rather than silently omitted.
 - **Fraud detection / identity verification** - not achievable from a card number in isolation, and not what Luhn is for.
+- **OpenAPI / Swagger spec** - not generated for a single-endpoint project; the README's request/response examples serve the same purpose at this scale. Worth adding via zod-to-openapi (deriving the spec from the existing Zod schema, so it can't drift from validation logic) if this grows to multiple endpoints.
 
 **Known simplification in error messages.** A missing `cardNumber` field and a `cardNumber` of the wrong type currently produce the same message (`"cardNumber must be a string"`), since both are represented as the same Zod issue type. A future iteration could distinguish "missing" from "wrong type" with more specific messaging if that granularity became useful to API consumers.
