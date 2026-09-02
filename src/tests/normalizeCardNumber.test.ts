@@ -1,4 +1,3 @@
-import "@/config/load-env.js";
 import { normalizeCardNumber } from "@/utils/normalizeCardNumber.js";
 import { describe, test, expect } from "vitest";
 
