@@ -6,7 +6,7 @@ import type { ICardNumber } from "./cardValidator.validate.js";
 
 export class CardValidatorController {
   constructor(private readonly cardValidatorService: CardValidatorService) {}
-  // eslint-disable-next-line @typescript-eslint/require-await, @typescript-eslint/explicit-function-return-type
+  // eslint-disable-next-line @typescript-eslint/require-await
   validateCard = async (req: TypedBodyRequest<ICardNumber>, res: Response): Promise<void> => {
     //* Validation middleware already validated data!
 
