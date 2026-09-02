@@ -5,6 +5,7 @@ import { isDev } from "./config/index.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 import { AppError } from "@/errors/AppError.js";
 import { healthRouter } from "./health/health.routes.js";
+import { cardValidatorRouter } from "./modules/card-validator/cardValidator.routes.js";
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(express.json());
 
 // Mounting Routes
 app.use("/api/v1/health", healthRouter);
+app.use("/api/v1/public/cards", cardValidatorRouter);
 
 // Catch all routes and display 404 for not matched route
 app.use((req: Request, _res: Response, _next: NextFunction) => {
