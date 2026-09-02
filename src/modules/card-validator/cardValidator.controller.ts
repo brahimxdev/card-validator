@@ -13,11 +13,11 @@ export class CardValidatorController {
     const { cardNumber } = req.validated.body;
 
     // Service layer to handle logic
-    const { valid, brand } = this.cardValidatorService.validate(cardNumber);
+    const result = this.cardValidatorService.validate(cardNumber);
 
     res.status(HttpStatus.OK).json({
       success: true,
-      data: { valid, brand },
+      data: result,
     });
   };
 }
